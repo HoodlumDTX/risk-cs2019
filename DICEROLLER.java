@@ -1,4 +1,4 @@
-
+//this is the risk dice roller
 public class DICEROLLER {
 
 	private int value;
