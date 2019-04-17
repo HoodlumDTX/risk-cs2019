@@ -3,6 +3,10 @@ public class Armies {
 Country Location;
 int Size;
 
+	public Armies(Country Loc, int s){
+		Location=Loc;
+		Size=s;
+	}
 
 	public int getLoc(){
 		return Location.getCountryNum();
