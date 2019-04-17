@@ -1,15 +1,15 @@
 
 public class Armies {
-Country Location;
+int Location;
 int Size;
 
-	public Armies(Country Loc, int s){
+	public Armies(int Loc, int s){
 		Location=Loc;
 		Size=s;
 	}
 
 	public int getLoc(){
-		return Location.getCountryNum();
+		return Location;
 	}
 	
 	public int getSize(){
