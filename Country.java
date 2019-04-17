@@ -13,7 +13,8 @@ public class Country {
 		a = new Armies();
 	}
 	
-	public Country(Player iP, Armies iA, ArrayList<Integer> tC){
+	public Country(int cN, Player iP, Armies iA, ArrayList<Integer> tC){
+		countryNum = cN
 		p = iP;
 		a = iA;
 		touchingCountries = tC;
