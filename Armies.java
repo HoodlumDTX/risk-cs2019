@@ -24,5 +24,10 @@ int Size;
 			Size=0;
 		}
 	}
+	
+	public Armies getStartArmies(int cn){
+		Armies a = new Armies(cn, 1);
+		return a;
+	}
 }
 
