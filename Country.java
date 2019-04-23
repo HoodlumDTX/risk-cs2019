@@ -4,20 +4,14 @@ public class Country {
 	
 	private int countryNum;
 	private ArrayList<Integer> touchingCountries;
-	private Player p;
-	private Armies a;
 	
 	public Country(){
 		countryNum = 0;
 		touchingCountries = new ArrayList<Integer>();
-		p = new Player();
-		a = new Armies();
 	}
 	
-	public Country(int cN, Player iP, Armies iA, ArrayList<Integer> tC){
+	public Country(int cN, ArrayList<Integer> tC){
 		countryNum = cN;
-		p = iP;
-		a = iA;
 		touchingCountries = tC;
 	}
 	
@@ -49,22 +43,7 @@ public class Country {
 		return countryNum;
 	}
 	
-	public void setPlayer(Player var){
-		p = var;
-	}
-	
-	public void setArmies(Armies var){
-		a = var;
-	}
-	
-	public Player getPlayer(){
-		return p;
-	}
-	
-	public Armies getArmies(){
-		return a;
-	}
-	
+	/*
 	public ArrayList<Boolean> continentControl(Player p, ArrayList<Country> all){
 		//order goes
 		//0 = North America
@@ -127,4 +106,5 @@ public class Country {
 			returnArray.set(5, true);
 		return returnArray;
 	}
+	*/
 }
