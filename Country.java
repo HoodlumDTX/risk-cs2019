@@ -15,26 +15,6 @@ public class Country {
 		touchingCountries = tC;
 	}
 	
-	public ArrayList<Integer> getFriendlyNeighbors(){
-		ArrayList<Integer> returnList = new ArrayList<Integer>();
-		for (Integer var : touchingCountries){
-			if (var == countryNum){
-				returnList.add(var);
-			}
-		}
-		return returnList;
-	}
-	
-	public ArrayList<Integer> getEnemyNeighbors(){
-		ArrayList<Integer> returnList = new ArrayList<Integer>();
-		for (Integer var : touchingCountries){
-			if (var != countryNum){
-				returnList.add(var);
-			}
-		}
-		return returnList;
-	}
-	
 	public ArrayList<Integer> getTouchingCountries(){
 		return touchingCountries;
 	}
