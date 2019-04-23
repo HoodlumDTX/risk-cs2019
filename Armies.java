@@ -16,7 +16,7 @@ int Size;
 		return Size;
 	}
 	
-	public void EditTroopSize(int num){
+	public void editTroopSize(int num){
 		if(Size-num>0){
 			Size=Size-num;
 		}
