@@ -12,7 +12,7 @@ public class Player {
 		playerNum=-1;
 	}
 	/*
-	//alternate to getTroopsPerTurn()
+	//I'd like to suggest this alternate to getTroopsPerTurn()
 	
 	
 		public int getTroopsPerTurn(){
