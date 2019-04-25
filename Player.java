@@ -11,6 +11,35 @@ public class Player {
 		a = new ArrayList<Armies>();
 		playerNum=-1;
 	}
+	/*
+	//alternate to getTroopsPerTurn()
+	
+	
+		public int getTroopsPerTurn(){
+		int tot=3;
+		tot+=a.size()/3;
+		//checking continent control
+		int NACounter = 0, SACounter = 0, AFCounter = 0, EUCounter = 0, ASCounter = 0, AUCounter = 0;
+		for (int i = 0; i < a.size(); i++){
+			int s = a.get(i).getLoc();
+			if (s > 0 && s < 10) NACounter++;
+			else if (s > 9 && s < 14) SACounter++;
+			else if (s > 13 && s < 20) AFCounter++;
+			else if (s > 19 && s < 27) EUCounter++;
+			else if (s > 26 && s < 39) ASCounter++;
+			else if (s > 38 && s < 43) AUCounter++;
+		}
+		if (NACounter == 9) tot += 5;
+		if (SACounter == 4) tot += 2;
+		if (AFCounter == 6) tot += 3;
+		if (EUCounter == 7) tot += 5;
+		if (ASCounter == 12) tot += 7;
+		if (AUCounter == 4) tot += 2;
+		return tot;
+	}
+	
+	
+	*/
 	public int getTroopsPerTurn(){
 		int tot=3;
 		tot+=a.size()/3;
