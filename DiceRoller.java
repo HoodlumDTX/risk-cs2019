@@ -1,6 +1,12 @@
 //this is the risk dice roller
 public class DICEROLLER {
-
+	/*
+public class DICEROLLER {
+	public int roll(){
+		return (int)(Math.random()*6) + 1;
+	}
+}
+*/
 	private int value;
 	
 	public DICEROLLER(){
