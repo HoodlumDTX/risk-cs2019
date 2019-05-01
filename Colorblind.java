@@ -86,7 +86,7 @@ public class Colorblind {
 						while(has==false){
 							int addArm = scan.nextInt();
 							for(int x=0;x<TPA.size();x++){
-								if(TPA.get(x)==addArm&&has==false){
+								if(TPA.get(x).getLoc()==addArm&&has==false){
 									has=true;
 									found=x;
 								}
