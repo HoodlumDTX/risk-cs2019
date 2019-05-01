@@ -8,47 +8,15 @@ public class Colorblind {
 	private ArrayList<Boolean> Turn=new ArrayList<Boolean>(); //return position of player
 	private ArrayList<Boolean> Divi=new ArrayList<Boolean>();
 	private ArrayList<Player> PS=new ArrayList<Player>();
-	public Colorblind(int numPlay){
+		public ExperimentClass(int numPlay){
 		PlayerCount=numPlay;
-		boolean p1=true, p2=false, p3=false,p4=false,p5=false,p6=false;
+		boolean[] playerBooleanArray = new boolean[] {true, false, false, false, false, false};
+		Player[] playerArray = new Player[] {new Player(1), new Player(1), new Player(3), new Player(4), new Player(5), new Player(6)};
 		for(int i=1;i<=numPlay;i++){
 			//player.addArmy
-			if(i==1){
-				Turn.add(p1);
-				Divi.add(p1);
-				Player P1=new Player(1);
-				PS.add(P1);
-			}	
-			if(i==2){
-				Turn.add(p2);
-				Divi.add(p2);
-				Player P2=new Player(2);
-				PS.add(P2);
-			}
-			if(i==3){
-				Turn.add(p3);
-				Divi.add(p3);
-				Player P3=new Player(3);
-				PS.add(P3);
-			}
-			if(i==4){
-				Turn.add(p4);
-				Divi.add(p4);
-				Player P4=new Player(4);
-				PS.add(P4);
-			}
-			if(i==5){
-				Turn.add(p5);
-				Divi.add(p5);
-				Player P5=new Player(5);
-				PS.add(P5);
-			}
-			if(i==6){
-				Turn.add(p6);
-				Divi.add(p6);
-				Player P6=new Player(6);
-				PS.add(P6);
-			}
+			Turn.add(playerBooleanArray[i-1]);
+			Divi.add(playerBooleanArray[i-1]);
+			PS.add(playerArray[i-1]);
 		}
 		this.DivinciCode();
 	}
