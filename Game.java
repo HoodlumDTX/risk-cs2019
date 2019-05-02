@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public class Colorblind {
+public class Game{
 	Scanner scan = new Scanner(System.in);
 	private int PlayerCount;
 	private ArrayList<Boolean> Turn=new ArrayList<Boolean>(); //return position of player
