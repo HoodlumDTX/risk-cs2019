@@ -5,10 +5,10 @@ import java.util.Scanner;
 
 public class Game {
 	Scanner scan = new Scanner(System.in);
-	private int PlayerCount;
-	private ArrayList<Boolean> Turn=new ArrayList<Boolean>(); //return position of player
-	private ArrayList<Boolean> Divi=new ArrayList<Boolean>();
-	private ArrayList<Player> PS=new ArrayList<Player>();
+	public int PlayerCount;
+	public ArrayList<Boolean> Turn=new ArrayList<Boolean>(); //return position of player
+	public ArrayList<Boolean> Divi=new ArrayList<Boolean>();
+	public ArrayList<Player> PS=new ArrayList<Player>();
 	public Game(int numPlay){
 		PlayerCount = numPlay;
 		boolean p1=true, p2=false, p3=false,p4=false,p5=false,p6=false;
