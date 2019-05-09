@@ -1,10 +1,12 @@
 package com.cs2019.risk;
 import java.util.ArrayList;
-import java.util.Scanner;
+//import java.util.Scanner;
+//Scanner Line Here!!!
 
 
 public class Game {
-	Scanner scan = new Scanner(System.in);
+	//Scanner scan = new Scanner(System.in);
+	//Scanner line here!!!
 	public int PlayerCount;
 	public ArrayList<Boolean> Turn=new ArrayList<Boolean>(); //return position of player
 	public ArrayList<Boolean> Divi=new ArrayList<Boolean>();
@@ -87,7 +89,8 @@ public class Game {
 						boolean has=false;
 						int found=-1;
 						while(has==false){
-						    addArm = scan.nextInt();
+						    //addArm = scan.nextInt();
+							//Scanner Line here!!!
 							for(int x=0;x<TPA.size();x++){
 								if(TPA.get(x).getLoc()==addArm&&has==false){
 									has=true;
