@@ -25,6 +25,15 @@ int Size;
 		}
 	}
 	
+	public void setSize(int num){
+		Size=num;
+	}
+	
+	public void mergeArmies(Armies h){
+		Size+=h.getSize();
+		h.setSize(0);
+	}
+	
 	public Armies getStartArmies(int cn){
 		Armies a = new Armies(cn, 1);
 		return a;
