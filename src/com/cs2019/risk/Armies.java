@@ -31,7 +31,6 @@ int Size;
 	
 	public void mergeArmies(Armies h){
 		Size+=h.getSize();
-		h.setSize(0);
 	}
 	
 	public Armies getStartArmies(int cn){
