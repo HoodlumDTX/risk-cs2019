@@ -77,6 +77,10 @@ public class Country {
 		return name;
 	}
 
+	public Country intToCountry(int num){
+		Country[] list = initializeCountries();
+		return list[num - 1];
+	}
 
 	/*
 	public ArrayList<Boolean> continentControl(Player p, ArrayList<Country> all){
