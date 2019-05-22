@@ -1,16 +1,14 @@
 package com.cs2019.risk;
 import java.util.ArrayList;
-//import java.util.Scanner;
-//Scanner Line Here!!!
+import java.util.Scanner;
 
 
 public class Game {
-	//Scanner scan = new Scanner(System.in);
-	//Scanner line here!!!
-	public int PlayerCount;
-	public ArrayList<Boolean> Turn=new ArrayList<Boolean>(); //return position of player
-	public ArrayList<Boolean> Divi=new ArrayList<Boolean>();
-	public ArrayList<Player> PS=new ArrayList<Player>();
+	Scanner scan = new Scanner(System.in);
+	private int PlayerCount;
+	private ArrayList<Boolean> Turn = new ArrayList<Boolean>(); //return position of player
+	private ArrayList<Boolean> Divi = new ArrayList<Boolean>();
+	public ArrayList<Player> PS = new ArrayList<Player>();
 	public Game(int numPlay){
 		PlayerCount = numPlay;
 		boolean p1=true, p2=false, p3=false,p4=false,p5=false,p6=false;
@@ -89,8 +87,7 @@ public class Game {
 						boolean has=false;
 						int found=-1;
 						while(has==false){
-						    //addArm = scan.nextInt();
-							//Scanner Line here!!!
+						    addArm = scan.nextInt();
 							for(int x=0;x<TPA.size();x++){
 								if(TPA.get(x).getLoc()==addArm&&has==false){
 									has=true;
@@ -104,6 +101,6 @@ public class Game {
 			}
 		}
 	}
-	
+
 
 }

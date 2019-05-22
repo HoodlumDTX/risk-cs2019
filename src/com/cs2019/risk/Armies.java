@@ -24,18 +24,5 @@ int Size;
 			Size=0;
 		}
 	}
-	
-	public void setSize(int num){
-		Size=num;
-	}
-	
-	public void mergeArmies(Armies h){
-		Size+=h.getSize();
-	}
-	
-	public Armies getStartArmies(int cn){
-		Armies a = new Armies(cn, 1);
-		return a;
-	}
 }
 
