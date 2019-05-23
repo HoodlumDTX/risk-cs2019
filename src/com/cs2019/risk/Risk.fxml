@@ -70,7 +70,7 @@
                   <Button fx:id="Indonesia" layoutX="119.0" layoutY="225.0" mnemonicParsing="false" onAction="#handleCountryAction" prefHeight="29.0" prefWidth="69.0" text="Button" />
                   <Button fx:id="NewGuinea" layoutX="119.0" layoutY="225.0" mnemonicParsing="false" onAction="#handleCountryAction" prefHeight="29.0" prefWidth="69.0" text="Button" />
                   <Button fx:id="WesternAustralia" layoutX="119.0" layoutY="225.0" mnemonicParsing="false" onAction="#handleCountryAction" prefHeight="29.0" prefWidth="69.0" text="Button" />
-                  <Button fx:id="EsternAustralia" layoutX="119.0" layoutY="225.0" mnemonicParsing="false" onAction="#handleCountryAction" prefHeight="29.0" prefWidth="69.0" text="Button" />
+                  <Button fx:id="EasternAustralia" layoutX="119.0" layoutY="225.0" mnemonicParsing="false" onAction="#handleCountryAction" prefHeight="29.0" prefWidth="69.0" text="Button" />
                </children>
             </Pane>
          </children>
