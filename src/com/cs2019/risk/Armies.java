@@ -7,15 +7,20 @@ int Size;
 		Location=Loc;
 		Size=s;
 	}
+	
+	public Armies(){
+	    Location = 0;
+	    Size = 0;
+	}
 
 	public int getLoc(){
 		return Location;
 	}
-	
+
 	public int getSize(){
 		return Size;
 	}
-	
+
 	public void editTroopSize(int num){
 		if(Size-num>0){
 			Size=Size-num;
@@ -25,4 +30,3 @@ int Size;
 		}
 	}
 }
-

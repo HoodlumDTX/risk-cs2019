@@ -1,15 +1,19 @@
 package com.cs2019.risk;
 //getLoc, getSize, editTroopSize
 import java.util.*;
+
+import javafx.scene.paint.Color;
 public class Player {
-	private ArrayList<Armies> a;
+	private HashMap<Integer, Country> a;
 	private int playerNum;
-	public Player(int p){
-		a = new ArrayList<Armies>();
+	private Color playerColor = Color.BLACK;
+	public Player(int p, Color playerColor){
+		a = new HashMap<Integer, Country>();
 		playerNum=p;
+		this.playerColor = playerColor;
 	}
 	public Player(){
-		a = new ArrayList<Armies>();
+		a = new HashMap<Integer, Country>();
 		playerNum=-1;
 	}
 	/*
@@ -48,59 +52,53 @@ public class Player {
 		int c=0;
 		for (int j=1;j<10;j++)
 			for (int i=0;i<a.size();i++)
-				if (a.get(i).getLoc()==j)
+				if (a.get(i).getArmy().getLoc()==j)
 					c++;
 		if (c==9)
 			tot+=5;
 		c=0;
 		for (int j=10;j<14;j++)
 			for (int i=0;i<a.size();i++)
-				if (a.get(i).getLoc()==j)
+				if (a.get(i).getArmy().getLoc()==j)
 					c++;
 		if (c==4)
 			tot+=2;
 		c=0;
 		for (int j=14;j<20;j++)
 			for (int i=0;i<a.size();i++)
-				if (a.get(i).getLoc()==j)
+				if (a.get(i).getArmy().getLoc()==j)
 					c++;
 		if (c==6)
 			tot+=3;
 		c=0;
 		for (int j=20;j<27;j++)
 			for (int i=0;i<a.size();i++)
-				if (a.get(i).getLoc()==j)
+				if (a.get(i).getArmy().getLoc()==j)
 					c++;
 		if (c==7)
 			tot+=5;
 		c=0;
 		for (int j=27;j<39;j++)
 			for (int i=0;i<a.size();i++)
-				if (a.get(i).getLoc()==j)
+				if (a.get(i).getArmy().getLoc()==j)
 					c++;
 		if (c==12)
 			tot+=7;
 		c=0;
 		for (int j=39;j<43;j++)
 			for (int i=0;i<a.size();i++)
-				if (a.get(i).getLoc()==j)
+				if (a.get(i).getArmy().getLoc()==j)
 					c++;
 		if (c==4)
 			tot+=2;
 		return tot;
 			
 	}
-	public int getPlayerNum(){
-		return playerNum;
-	}
-	public ArrayList<Armies> getArmies(){
-		return a;
-	}
 	
 	public void attack(Country bf, Country attackingCountry, Armies attacker, int attackForceSize, Player defender){
 		int battlefield=bf.getCountryNum();
 		int lg1=0, lg2=0, at1=0,at2=0,at3=0, def1=0,def2=0;
-		Armies defenseArmy = defender.getArmy(battlefield);
+		Armies defenseArmy = defender.getCountry(battlefield).getArmy();
 		
 		
 		at1 = (new DiceRoller()).getValue();
@@ -160,21 +158,21 @@ public class Player {
 		//lg1 and lg2 should be filled
 			if (attacker.getSize()==1){
 				if (lg1>def1)
-					defender.editArmies(battlefield, -1);
+					defender.editArmy(battlefield, -1);
 				else{
-					editArmies(attacker.getLoc(), -1);
+					editArmy(attacker.getLoc(), -1);
 					attackForceSize-=1;}
 			}
 			else{
 				if (lg1>def1)
-					defender.editArmies(battlefield, -1);
+					defender.editArmy(battlefield, -1);
 				else{
-					editArmies(attacker.getLoc(), -1);
+					editArmy(attacker.getLoc(), -1);
 					attackForceSize-=1;}
 				if (lg2>def2)
-					defender.editArmies(battlefield, -1);
+					defender.editArmy(battlefield, -1);
 				else{
-					editArmies(attacker.getLoc(), -1);
+					editArmy(attacker.getLoc(), -1);
 					attackForceSize-=1;}
 			}
 		}
@@ -210,27 +208,27 @@ public class Player {
 			}
 		//lg1 and lg2 should be filled
 			if (lg1>def1)
-				defender.editArmies(battlefield, -1);
+				defender.editArmy(battlefield, -1);
 			else{
-				editArmies(attacker.getLoc(), -1);
+				editArmy(attacker.getLoc(), -1);
 				attackForceSize-=1;}
 		}
 		
 		//battle has concluded
 		//update numbers, not sure it actually needs to do this but I'm not taking any chances
 		
-		defenseArmy=defender.getArmy(battlefield);
+		defenseArmy=defender.getCountry(battlefield).getArmy();
 		int defForceSize=defenseArmy.getSize();
 		for (int i=0; i<a.size(); i++)
-			if (a.get(i).getLoc()==attacker.getLoc())
-				attacker=a.get(i);
+			if (a.get(i).getArmy().getLoc()==attacker.getLoc())
+				attacker=a.get(i).getArmy();
 		
 		if (defForceSize==0){//for if the attacker wins
 
-			defender.editArmies(battlefield, attackForceSize);
-			editArmies(attacker.getLoc(), -1*attackForceSize);
-			addArmy(defender.getArmy(defenseArmy.getLoc()));
-			defender.removeArmies(defenseArmy.getLoc());
+			defender.editArmy(battlefield, attackForceSize);
+			editArmy(attacker.getLoc(), -1*attackForceSize);
+			addCountry(defender.getCountry(defenseArmy.getLoc()));
+			defender.removeCountry(defenseArmy.getLoc());
 		}
 		else if (attackForceSize==0){//for if the defender wins
 			//I don't think anything else needs to be done but I'll leave it open
@@ -239,33 +237,52 @@ public class Player {
 			attack(bf,attackingCountry, attacker, attackForceSize,defender);
 			
 	}
-	public void removeArmies(int armyLocation){
+	
+	public int getPlayerNum(){
+		return playerNum;
+	}
+	
+	public HashMap<Integer, Country> getCountries(){
+		return a;
+	}
+	
+	public void removeCountry(int armyLocation){
 		for (int i=0;i<a.size();i++)
-			if (a.get(i).getLoc()==armyLocation)
+			if (a.get(i).getArmy().getLoc()==armyLocation)
 				a.remove(i);
 	}
-	public void editArmies(int armyLocation, int numChange){
+	public void editArmy(int armyLocation, int numChange){
 		for (int i=0;i<a.size();i++)
-			if (a.get(i).getLoc()==armyLocation)
-				a.get(i).editTroopSize(numChange);
+			if (a.get(i).getArmy().getLoc()==armyLocation)
+			    a.get(i).getArmy().editTroopSize(numChange);
 	}
-	public void destroyArmy(int armyLocation){
+	public void destroyCountry(int armyLocation){
 		for (int i=0;i<a.size();i++)
-			if (a.get(i).getLoc()==armyLocation)
+			if (a.get(i).getArmy().getLoc()==armyLocation)
 				a.remove(i);
 	}
-	public Armies getArmy(int armyLocation){
-		for (int i=0;i<a.size();i++)
-			if (a.get(i).getLoc()==armyLocation)
-				return a.get(i);
+	public Country getCountry(int armyLocation){
+			if (a.get(armyLocation).getCountryNum() == armyLocation)
+				return a.get(armyLocation);
 		return null;
 	}
 	public void fortify(int startArmyLocation, int endArmyLocation, int amtChange){
-		editArmies(startArmyLocation, -1*amtChange);
-		editArmies(endArmyLocation, amtChange);
-	}
-	public void addArmy(Armies n){
-		a.add(n);
+		editArmy(startArmyLocation, -1*amtChange);
+		editArmy(endArmyLocation, amtChange);
 	}
 	
+	public void addCountry(Country c){
+		a.put(c.getCountryNum(), c);
+	}
+	
+	public String getColorHex(){
+	    if(playerColor == Color.RED) return "#ff0000";
+	    if(playerColor == Color.ORANGE) return "#ffa500";
+	    if(playerColor == Color.YELLOW) return "#ffff00";
+	    if(playerColor == Color.GREEN) return "#008000";
+	    if(playerColor == Color.BLUE) return "#0000FF";
+	    if(playerColor == Color.PURPLE) return "#800080";
+	    if(playerColor == Color.BLACK) return "#000000";
+	    	return "#000000";
+	}
 }
